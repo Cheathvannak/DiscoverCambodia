@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations - Discover Cambodia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/api/placeholder/1920/600') center/cover no-repeat;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #f8c537;
+        }
+        
+        .nav-items {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-items li {
+            margin-left: 30px;
+        }
+        
+        .nav-items a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-items a:hover {
+            color: #f8c537;
+        }
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100%;
+            color: #fff;
+            padding: 0 20px;
+        }
+        
+        .page-title {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+        }
+        
+        .page-subtitle {
+            font-size: 20px;
+            max-width: 700px;
+            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.8);
+        }
+        
+        .destination-section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #333;
+        }
+        
+        .section-subtitle {
+            font-size: 18px;
+            margin-bottom: 50px;
+            text-align: center;
+            color: #666;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .destination-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .destination-img {
+            height: 250px;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        
+        .destination-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 20px;
+            color: #fff;
+        }
+        
+        .destination-name {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .destination-region {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .destination-content {
+            padding: 20px;
+        }
+        
+        .destination-description {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #666;
+        }
+        
+        .highlights {
+            margin-bottom: 20px;
+        }
+        
+        .highlights-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .highlights-list {
+            list-style: none;
+        }
+        
+        .highlights-list li {
+            padding: 5px 0;
+            position: relative;
+            padding-left: 20px;
+            color: #666;
+        }
+        
+        .highlights-list li:before {
+            content: '•';
+            color: #f8c537;
+            position: absolute;
+            left: 0;
+            font-size: 20px;
+            line-height: 20px;
+        }
+        
+        .destination-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+        
+        .best-time {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .details-btn {
+            display: inline-block;
+            background-color: #f8c537;
+            color: #000;
+            padding: 10px 20px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .details-btn:hover {
+            background-color: #e0b12e;
+        }
+
+        .siem-reap-img {
+            background-image: url('https://afar.brightspotcdn.com/dims4/default/8af48b4/2147483647/strip/false/crop/3000x1997+0+0/resize/1486x989!/quality/90/?url=https%3A%2F%2Fk3-prod-afar-media.s3.us-west-2.amazonaws.com%2Fbrightspot%2F34%2F8c%2F0a3f548947909b5b8d79b935b03f%2Ftravelguides-siemreap-guitarphotographer-shutterstock.jpg');
+        }
+
+        .sihanoukville-img {
+            background-image: url('https://b2b-cambodia.com/storage/uploads/articles/large/l4ij2U3D2IZ6A1BPGX9cqSP0QuveRn7zZkihmYU2.jpg');
+        }
+
+        .phnom-penh-img {
+            background-image: url('https://www.siemreap.net/wp-content/uploads/2016/08/phnom-penh-independence-monument.jpg');
+        }
+        
+        .battambang-img {
+            background-image: url('https://pppenglish.sgp1.digitaloceanspaces.com/image/main/field/image/a_statue_of_lok_ta_dambang_kronhung_at_his_namesake_roundabout_on_national_road_5_in_battambang_town._yousos_apdoulrashim.jpg');
+        }
+        
+        .koh-rong-img {
+            background-image: url('https://media.connections.be/image/upload/c_fill,g_auto,q_auto:best,w_3840,f_auto//v1712073751/Destinations/Asia/Cambodia/TOURS/UITBREIDING/Tropical_Getaway/Header.jpg');
+        }
+        
+        .kampot-img {
+            background-image: url('https://www.khmertimeskh.com/wp-content/uploads/2020/07/5439.jpg');
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+        }
+        
+        .search-bar {
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .search-form {
+            display: flex;
+            width: 100%;
+            max-width: 600px;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-right: none;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .search-btn {
+            background-color: #f8c537;
+            color: #000;
+            border: none;
+            padding: 0 20px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .search-btn:hover {
+            background-color: #e0b12e;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .nav-items {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                background-color: rgba(0, 0, 0, 0.9);
+                width: 100%;
+                height: 100vh;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                transition: right 0.5s;
+                z-index: 100;
+            }
+            
+            .nav-items.active {
+                right: 0;
+            }
+            
+            .nav-items li {
+                margin: 20px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .page-title {
+                font-size: 36px;
+            }
+            
+            .page-subtitle {
+                font-size: 16px;
+            }
+            
+            .destination-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="container nav-container">
+                <a href="index.html" class="logo">Discover<span>Cambodia</span></a>
+                <ul class="nav-items">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="https://www.trip.com/t/8DjKMwM9bP2">Bookings</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="destinations.html" class="active">Destinations</a></li>
+                    <li><a href="https://www.evisa.gov.kh/">Visa</a></li>
+                    <li><a href="applications.html">Essential Applications</a></li>
+                </ul>
+                <div class="mobile-menu-btn">☰</div>
+            </div>
+        </nav>
+        <div class="header-content">
+            <h1 class="page-title">Explore Cambodia's Treasures</h1>
+            <p class="page-subtitle">Discover ancient temples, pristine beaches, vibrant cities, and hidden gems</p>
+        </div>
+    </header>
+    
+    <section class="destination-section">
+        <div class="container">
+            <h2 class="section-title">Popular Destinations</h2>
+            <p class="section-subtitle">From the majestic temples of Angkor to the pristine beaches of the south, Cambodia offers a wealth of experiences for every traveler</p>
+            
+            
+            <div class="destination-grid">
+                <div class="destination-card">
+                    <div class="destination-img siem-reap-img">
+                        <div class="destination-label">
+                            <h3 class="destination-name">Siem Reap</h3>
+                            <p class="destination-region">Northern Cambodia</p>
+                        </div>
+                    </div>
+                    <div class="destination-content">
+                        <p class="destination-description">The gateway to the ancient temples of Angkor, Siem Reap combines small-town charm with a thriving food scene, vibrant nightlife, and traditional arts.</p>
+                        
+                        <div class="highlights">
+                            <h4 class="highlights-title">Highlights</h4>
+                            <ul class="highlights-list">
+                                <li>Angkor Wat and Angkor Archaeological Park</li>
+                                <li>Pub Street and Night Markets</li>
+                                <li>Cambodian Circus (Phare)</li>
+                                <li>Cambodian Cultural Village</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="destination-footer">
+                            <div class="best-time">Best time to visit: Nov-Feb</div>
+                            <a href="https://en.wikipedia.org/wiki/Siem_Reap" class="details-btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="destination-card">
+                    <div class="destination-img phnom-penh-img">
+                        <div class="destination-label">
+                            <h3 class="destination-name">Phnom Penh</h3>
+                            <p class="destination-region">Central Cambodia</p>
+                        </div>
+                    </div>
+                    <div class="destination-content">
+                        <p class="destination-description">Cambodia's bustling capital sits at the junction of the Mekong and Tonlé Sap rivers and offers a mix of colonial architecture, modern development, and historical sites.</p>
+                        
+                        <div class="highlights">
+                            <h4 class="highlights-title">Highlights</h4>
+                            <ul class="highlights-list">
+                                <li>Royal Palace and Silver Pagoda</li>
+                                <li>National Museum of Cambodia</li>
+                                <li>Central Market (Phsar Thmei)</li>
+                                <li>Tuol Sleng Genocide Museum</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="destination-footer">
+                            <div class="best-time">Best time to visit: Nov-Feb</div>
+                            <a href="https://en.wikipedia.org/wiki/Phnom_Penh" class="details-btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="destination-card">
+                    <div class="destination-img sihanoukville-img">
+                        <div class="destination-label">
+                            <h3 class="destination-name">Sihanoukville</h3>
+                            <p class="destination-region">Southern Cambodia</p>
+                        </div>
+                    </div>
+                    <div class="destination-content">
+                        <p class="destination-description">Cambodia's premier beach destination offering white-sand beaches, clear waters, and a gateway to pristine islands just off the coast.</p>
+                        
+                        <div class="highlights">
+                            <h4 class="highlights-title">Highlights</h4>
+                            <ul class="highlights-list">
+                                <li>Otres Beach</li>
+                                <li>Sokha Beach</li>
+                                <li>Koh Rong Island Day Trip</li>
+                                <li>Ream National Park</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="destination-footer">
+                            <div class="best-time">Best time to visit: Nov-May</div>
+                            <a href="https://en.wikipedia.org/wiki/Sihanoukville" class="details-btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="destination-card">
+                    <div class="destination-img battambang-img">
+                        <div class="destination-label">
+                            <h3 class="destination-name">Battambang</h3>
+                            <p class="destination-region">Northwestern Cambodia</p>
+                        </div>
+                    </div>
+                    <div class="destination-content">
+                        <p class="destination-description">Cambodia's second-largest city offers French colonial architecture, a thriving arts scene, and rural countryside perfect for immersive cultural experiences.</p>
+                        
+                        <div class="highlights">
+                            <h4 class="highlights-title">Highlights</h4>
+                            <ul class="highlights-list">
+                                <li>Bamboo Train (Norry)</li>
+                                <li>Phare Ponleu Selpak Arts School</li>
+                                <li>Bat Caves at Phnom Sampeau</li>
+                                <li>Colonial Architecture</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="destination-footer">
+                            <div class="best-time">Best time to visit: Nov-Feb</div>
+                            <a href="https://en.wikipedia.org/wiki/Battambang" class="details-btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="destination-card">
+                    <div class="destination-img koh-rong-img">
+                        <div class="destination-label">
+                            <h3 class="destination-name">Koh Rong</h3>
+                            <p class="destination-region">Coastal Islands</p>
+                        </div>
+                    </div>
+                    <div class="destination-content">
+                        <p class="destination-description">Cambodia's most beautiful island offers pristine beaches, crystal-clear waters ideal for snorkeling, and a laid-back atmosphere away from the mainland.</p>
+                        
+                        <div class="highlights">
+                            <h4 class="highlights-title">Highlights</h4>
+                            <ul class="highlights-list">
+                                <li>Long Beach (Sok San)</li>
+                                <li>Bioluminescent Plankton</li>
+                                <li>Snorkeling and Diving</li>
+                                <li>Jungle Trekking</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="destination-footer">
+                            <div class="best-time">Best time to visit: Nov-May</div>
+                            <a href="https://en.wikipedia.org/wiki/Koh_Rong" class="details-btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="destination-card">
+                    <div class="destination-img kampot-img">
+                        <div class="destination-label">
+                            <h3 class="destination-name">Kampot</h3>
+                            <p class="destination-region">Southern Cambodia</p>
+                        </div>
+                    </div>
+                    <div class="destination-content">
+                        <p class="destination-description">A charming riverside town known for its colonial architecture, famous pepper plantations, and the beautiful Bokor National Park.</p>
+                        
+                        <div class="highlights">
+                            <h4 class="highlights-title">Highlights</h4>
+                            <ul class="highlights-list">
+                                <li>Bokor Mountain and National Park</li>
+                                <li>Kampot Pepper Plantations</li>
+                                <li>Riverside Cruises</li>
+                                <li>Pre-Angkorian Cave Temples</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="destination-footer">
+                            <div class="best-time">Best time to visit: Nov-Feb</div>
+                            <a href="https://en.wikipedia.org/wiki/Kampot" class="details-btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navItems = document.querySelector('.nav-items');
+        const contactUsLink = document.querySelector('.nav-items a[href="#contact"]');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navItems.classList.toggle('active');
+        });
+
+        // Close the menu when "Contact Us" is clicked
+        contactUsLink.addEventListener('click', () => {
+            navItems.classList.remove('active');
+        });
+    </script>
+
+    <footer class="footer" id="contact">
+        <div class="footer-top">
+            <div class="container footer-container">
+                <div class="footer-column">
+                    <h3 class="footer-heading">Discover<span>Cambodia</span></h3>
+                    <p class="footer-description">Your gateway to exploring the Kingdom of Wonders with its ancient temples, pristine beaches, and rich cultural heritage.</p>
+                   
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="footer-heading">Contact Us</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:cvannaknorak@gmail.com">cvannaknorak@gmail.com</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:086233332">086 233 332</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Phnom Penh, Cambodia</span>
+                        </li>
+                    </ul>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="copyright">&copy; 2025 DiscoverCambodia. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms & Conditions</a>
+                    <a href="#">Sitemap</a>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            /* Footer Styles */
+            .footer {
+                background-color: #1c1c1c;
+                color: #fff;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            
+            .footer-top {
+                padding: 60px 0 40px;
+            }
+            
+            .footer-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                gap: 30px;
+            }
+            
+            .footer-column {
+                flex: 1;
+                min-width: 250px;
+            }
+            
+            .footer-heading {
+                color: #fff;
+                margin-bottom: 20px;
+                font-size: 20px;
+                font-weight: 600;
+            }
+            
+            .footer-heading span {
+                color: #f8c537;
+            }
+            
+            .footer-description {
+                line-height: 1.6;
+                margin-bottom: 20px;
+                color: #b3b3b3;
+            }
+            
+            .social-icons {
+                display: flex;
+                gap: 15px;
+                margin-top: 20px;
+            }
+            
+            .social-icons a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background-color: #2c2c2c;
+                color: #f8c537;
+                transition: all 0.3s ease;
+            }
+            
+            .social-icons a:hover {
+                background-color: #f8c537;
+                color: #1c1c1c;
+                transform: translateY(-3px);
+            }
+            
+            .contact-info {
+                list-style: none;
+                padding: 0;
+            }
+            
+            .contact-info li {
+                display: flex;
+                align-items: center;
+                margin-bottom: 15px;
+                color: #b3b3b3;
+            }
+            
+            .contact-info i {
+                color: #f8c537;
+                margin-right: 10px;
+                font-size: 16px;
+                width: 20px;
+                text-align: center;
+            }
+            
+            .contact-info a {
+                color: #b3b3b3;
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+            
+            .contact-info a:hover {
+                color: #f8c537;
+            }
+            
+            .newsletter {
+                margin-top: 25px;
+            }
+            
+            .newsletter h4 {
+                font-size: 16px;
+                margin-bottom: 15px;
+                color: #fff;
+            }
+            
+            .newsletter-form {
+                display: flex;
+            }
+            
+            .newsletter-form input {
+                flex: 1;
+                padding: 10px 15px;
+                border: none;
+                background-color: #2c2c2c;
+                color: #fff;
+                border-radius: 4px 0 0 4px;
+            }
+            
+            .newsletter-form button {
+                padding: 10px 15px;
+                background-color: #f8c537;
+                border: none;
+                color: #000;
+                font-weight: 600;
+                cursor: pointer;
+                border-radius: 0 4px 4px 0;
+                transition: background-color 0.3s;
+            }
+            
+            .newsletter-form button:hover {
+                background-color: #e0b12e;
+            }
+            
+            .footer-bottom {
+                background-color: #151515;
+                padding: 20px 0;
+                text-align: center;
+            }
+            
+            .footer-bottom .container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            
+            .copyright {
+                color: #888;
+                font-size: 14px;
+                margin: 0;
+            }
+            
+            .footer-bottom-links {
+                display: flex;
+                gap: 20px;
+            }
+            
+            .footer-bottom-links a {
+                color: #888;
+                text-decoration: none;
+                font-size: 14px;
+                transition: color 0.3s;
+            }
+            
+            .footer-bottom-links a:hover {
+                color: #f8c537;
+            }
+            
+            @media screen and (max-width: 768px) {
+                .footer-container {
+                    flex-direction: column;
+                }
+                
+                .footer-bottom .container {
+                    flex-direction: column;
+                }
+                
+                .newsletter-form {
+                    flex-direction: column;
+                }
+                
+                .newsletter-form input {
+                    border-radius: 4px;
+                    margin-bottom: 10px;
+                }
+                
+                .newsletter-form button {
+                    border-radius: 4px;
+                }
+            }
+            
+            /* Add Font Awesome CDN for icons */
+            @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+        </style>
+    </footer>
+</body>
+</html>

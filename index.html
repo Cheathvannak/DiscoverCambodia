@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Cambodia - Tourism Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            color: #fff;
+            background-color: #f5f5f5;
+        }
+        
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://cdn.britannica.com/49/94449-050-ECB0E7C2/Angkor-Wat-temple-complex-Camb.jpg') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #f8c537;
+        }
+        
+        .nav-items {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-items li {
+            margin-left: 30px;
+        }
+        
+        .nav-items a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-items a:hover {
+            color: #f8c537;
+        }
+        
+        .hero-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .hero-title {
+            font-size: 60px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+        }
+        
+        .hero-subtitle {
+            font-size: 24px;
+            margin-bottom: 40px;
+            max-width: 700px;
+            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.8);
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            background-color: #f8c537;
+            color: #000;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .cta-btn:hover {
+            background-color: #e0b12e;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .featured-section {
+            padding: 80px 0;
+            text-align: center;
+            background-color: #fff;
+            color: #333;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #333;
+        }
+        
+        .cards {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .card {
+            flex: 1;
+            min-width: 250px;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card-img {
+            height: 200px;
+            background: url('/api/placeholder/400/200') center/cover no-repeat;
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .card-title {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        
+        .card-text {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .card-img {
+    height: 200px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.siem-reap-img {
+    background-image: url('https://afar.brightspotcdn.com/dims4/default/8af48b4/2147483647/strip/false/crop/3000x1997+0+0/resize/1486x989!/quality/90/?url=https%3A%2F%2Fk3-prod-afar-media.s3.us-west-2.amazonaws.com%2Fbrightspot%2F34%2F8c%2F0a3f548947909b5b8d79b935b03f%2Ftravelguides-siemreap-guitarphotographer-shutterstock.jpg');
+}
+
+.sihanoukville-img {
+    background-image: url('https://b2b-cambodia.com/storage/uploads/articles/large/l4ij2U3D2IZ6A1BPGX9cqSP0QuveRn7zZkihmYU2.jpg');
+}
+
+.phnom-penh-img {
+    background-image: url('https://www.siemreap.net/wp-content/uploads/2016/08/phnom-penh-independence-monument.jpg');
+}
+        
+        .card-btn {
+            display: inline-block;
+            background-color: #f8c537;
+            color: #000;
+            padding: 10px 20px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .card-btn:hover {
+            background-color: #e0b12e;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .nav-items {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                background-color: rgba(0, 0, 0, 0.9);
+                width: 100%;
+                height: 100vh;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                transition: right 0.5s;
+            }
+            
+            .nav-items.active {
+                right: 0;
+            }
+            
+            .nav-items li {
+                margin: 20px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-title {
+                font-size: 40px;
+            }
+            
+            .hero-subtitle {
+                font-size: 18px;
+            }
+            
+            .cards {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <nav class="navbar">
+            <div class="container nav-container">
+                <a href="#" class="logo">Discover<span>Cambodia</span></a>
+                <ul class="nav-items">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="https://www.trip.com/t/8DjKMwM9bP2">Bookings</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="https://www.evisa.gov.kh/">Visa</a></li>
+                    <li><a href="applications.html">Essential Applications</a></li>
+                </ul>
+                <div class="mobile-menu-btn">☰</div>
+            </div>
+        </nav>
+        <div class="hero-content">
+            <h1 class="hero-title">Discover the Kingdom of Wonders</h1>
+            <p class="hero-subtitle">Explore ancient temples, pristine beaches, and rich culture in the heart of Southeast Asia</p>
+            <a href="https://www.trip.com/t/8DjKMwM9bP2" class="cta-btn">Book Your Journey</a>
+        </div>
+    </section>
+    
+    <section class="featured-section" id="destinations">
+        <div class="container">
+            <h2 class="section-title">Popular Destinations</h2>
+            
+            <div class="cards">
+                <div class="card">
+                    <div class="card-img siem-reap-img"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Siem Reap</h3>
+                        <p class="card-text">Explore the gateway to the Angkor temples and experience the vibrant culture of this charming riverside town.</p>
+                        <a href="destinations.html" class="card-btn">Explore</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img sihanoukville-img"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Sihanoukville</h3>
+                        <p class="card-text">Relax on the pristine beaches of Sihanoukville and enjoy the crystal clear waters of the Gulf of Thailand.</p>
+                        <a href="destinations.html" class="card-btn">Explore</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img phnom-penh-img"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Phnom Penh</h3>
+                        <p class="card-text">Discover the vibrant capital city with its rich history, royal palaces, and bustling markets. Experience the blend of traditional and modern Cambodia.</p>
+                        <a href="destinations.html" class="card-btn">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer" id="contact">
+    <div class="footer-top">
+        <div class="container footer-container">
+            <div class="footer-column">
+                <h3 class="footer-heading">Discover<span>Cambodia</span></h3>
+                <p class="footer-description">Your gateway to exploring the Kingdom of Wonders with its ancient temples, pristine beaches, and rich cultural heritage.</p>
+
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="footer-heading">Contact Us</h3>
+                <ul class="contact-info">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:cvannaknorak@gmail.com">cvannaknorak@gmail.com</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:086233332">086 233 332</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Phnom Penh, Cambodia</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="container">
+            <p class="copyright">&copy; 2025 DiscoverCambodia. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Sitemap</a>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Footer Styles */
+        .footer {
+            background-color: #1c1c1c;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .footer-top {
+            padding: 60px 0 40px;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-heading {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .footer-heading span {
+            color: #f8c537;
+        }
+        
+        .footer-description {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #b3b3b3;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #2c2c2c;
+            color: #f8c537;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: #f8c537;
+            color: #1c1c1c;
+            transform: translateY(-3px);
+        }
+        
+        .contact-info {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #b3b3b3;
+        }
+        
+        .contact-info i {
+            color: #f8c537;
+            margin-right: 10px;
+            font-size: 16px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .contact-info a {
+            color: #b3b3b3;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-info a:hover {
+            color: #f8c537;
+        }
+        
+        .newsletter {
+            margin-top: 25px;
+        }
+        
+        .newsletter h4 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .newsletter-form {
+            display: flex;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 10px 15px;
+            border: none;
+            background-color: #2c2c2c;
+            color: #fff;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .newsletter-form button {
+            padding: 10px 15px;
+            background-color: #f8c537;
+            border: none;
+            color: #000;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 0 4px 4px 0;
+            transition: background-color 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: #e0b12e;
+        }
+        
+        .footer-bottom {
+            background-color: #151515;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        .footer-bottom .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .copyright {
+            color: #888;
+            font-size: 14px;
+            margin: 0;
+        }
+        
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-bottom-links a {
+            color: #888;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .footer-bottom-links a:hover {
+            color: #f8c537;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+            }
+            
+            .footer-bottom .container {
+                flex-direction: column;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-form button {
+                border-radius: 4px;
+            }
+        }
+        
+        /* Add Font Awesome CDN for icons */
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+    </style>
+</footer>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navItems = document.querySelector('.nav-items');
+        const contactUsLink = document.querySelector('.nav-items a[href="#contact"]');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navItems.classList.toggle('active');
+        });
+
+        // Close the menu when "Contact Us" is clicked
+        contactUsLink.addEventListener('click', () => {
+            navItems.classList.remove('active');
+        });
+    </script>
+</body>
+</html>
