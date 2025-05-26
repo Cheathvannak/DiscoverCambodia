@@ -1,0 +1,151 @@
+/* Home page specific styles */
+body {
+    color: #fff;
+    background-color: #f5f5f5;
+}
+
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://cdn.britannica.com/49/94449-050-ECB0E7C2/Angkor-Wat-temple-complex-Camb.jpg') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero-title {
+    font-size: 60px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.hero-subtitle {
+    font-size: 24px;
+    margin-bottom: 40px;
+    max-width: 700px;
+    text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.8);
+}
+
+.cta-btn {
+    display: inline-block;
+    background-color: #f8c537;
+    color: #000;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.cta-btn:hover {
+    background-color: #e0b12e;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.featured-section {
+    padding: 80px 0;
+    text-align: center;
+    background-color: #fff;
+    color: #333;
+}
+
+.section-title {
+    font-size: 36px;
+    margin-bottom: 50px;
+    color: #333;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.card {
+    flex: 1;
+    min-width: 250px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-img {
+    height: 200px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.siem-reap-img {
+    background-image: url('https://afar.brightspotcdn.com/dims4/default/8af48b4/2147483647/strip/false/crop/3000x1997+0+0/resize/1486x989!/quality/90/?url=https%3A%2F%2Fk3-prod-afar-media.s3.us-west-2.amazonaws.com%2Fbrightspot%2F34%2F8c%2F0a3f548947909b5b8d79b935b03f%2Ftravelguides-siemreap-guitarphotographer-shutterstock.jpg');
+}
+
+.sihanoukville-img {
+    background-image: url('https://b2b-cambodia.com/storage/uploads/articles/large/l4ij2U3D2IZ6A1BPGX9cqSP0QuveRn7zZkihmYU2.jpg');
+}
+
+.phnom-penh-img {
+    background-image: url('https://www.siemreap.net/wp-content/uploads/2016/08/phnom-penh-independence-monument.jpg');
+}
+
+.card-btn {
+    display: inline-block;
+    background-color: #f8c537;
+    color: #000;
+    padding: 10px 20px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.card-btn:hover {
+    background-color: #e0b12e;
+}
+
+@media screen and (max-width: 768px) {
+    .hero-title {
+        font-size: 40px;
+    }
+    
+    .hero-subtitle {
+        font-size: 18px;
+    }
+    
+    .cards {
+        justify-content: center;
+    }
+}

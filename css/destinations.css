@@ -1,0 +1,244 @@
+/* Destinations page specific styles */
+.header {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/api/placeholder/1920/600') center/cover no-repeat;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    color: #fff;
+    padding: 0 20px;
+}
+
+.page-title {
+    font-size: 48px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.page-subtitle {
+    font-size: 20px;
+    max-width: 700px;
+    text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.8);
+}
+
+.destination-section {
+    padding: 80px 0;
+}
+
+.section-title {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.section-subtitle {
+    font-size: 18px;
+    margin-bottom: 50px;
+    text-align: center;
+    color: #666;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.destination-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.destination-card {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.destination-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.destination-img {
+    height: 250px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.destination-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    padding: 20px;
+    color: #fff;
+}
+
+.destination-name {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.destination-region {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+.destination-content {
+    padding: 20px;
+}
+
+.destination-description {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #666;
+}
+
+.highlights {
+    margin-bottom: 20px;
+}
+
+.highlights-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.highlights-list {
+    list-style: none;
+}
+
+.highlights-list li {
+    padding: 5px 0;
+    position: relative;
+    padding-left: 20px;
+    color: #666;
+}
+
+.highlights-list li:before {
+    content: '•';
+    color: #f8c537;
+    position: absolute;
+    left: 0;
+    font-size: 20px;
+    line-height: 20px;
+}
+
+.destination-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.best-time {
+    color: #666;
+    font-size: 14px;
+}
+
+.details-btn {
+    display: inline-block;
+    background-color: #f8c537;
+    color: #000;
+    padding: 10px 20px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.details-btn:hover {
+    background-color: #e0b12e;
+}
+
+.siem-reap-img {
+    background-image: url('https://afar.brightspotcdn.com/dims4/default/8af48b4/2147483647/strip/false/crop/3000x1997+0+0/resize/1486x989!/quality/90/?url=https%3A%2F%2Fk3-prod-afar-media.s3.us-west-2.amazonaws.com%2Fbrightspot%2F34%2F8c%2F0a3f548947909b5b8d79b935b03f%2Ftravelguides-siemreap-guitarphotographer-shutterstock.jpg');
+}
+
+.sihanoukville-img {
+    background-image: url('https://b2b-cambodia.com/storage/uploads/articles/large/l4ij2U3D2IZ6A1BPGX9cqSP0QuveRn7zZkihmYU2.jpg');
+}
+
+.phnom-penh-img {
+    background-image: url('https://www.siemreap.net/wp-content/uploads/2016/08/phnom-penh-independence-monument.jpg');
+}
+
+.battambang-img {
+    background-image: url('https://pppenglish.sgp1.digitaloceanspaces.com/image/main/field/image/a_statue_of_lok_ta_dambang_kronhung_at_his_namesake_roundabout_on_national_road_5_in_battambang_town._yousos_apdoulrashim.jpg');
+}
+
+.koh-rong-img {
+    background-image: url('https://media.connections.be/image/upload/c_fill,g_auto,q_auto:best,w_3840,f_auto//v1712073751/Destinations/Asia/Cambodia/TOURS/UITBREIDING/Tropical_Getaway/Header.jpg');
+}
+
+.kampot-img {
+    background-image: url('https://www.khmertimeskh.com/wp-content/uploads/2020/07/5439.jpg');
+}
+
+.search-bar {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.search-form {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-right: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-size: 16px;
+}
+
+.search-btn {
+    background-color: #f8c537;
+    color: #000;
+    border: none;
+    padding: 0 20px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.search-btn:hover {
+    background-color: #e0b12e;
+}
+
+@media screen and (max-width: 768px) {
+    .page-title {
+        font-size: 36px;
+    }
+    
+    .page-subtitle {
+        font-size: 16px;
+    }
+    
+    .destination-grid {
+        grid-template-columns: 1fr;
+    }
+}

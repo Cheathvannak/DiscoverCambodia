@@ -1,0 +1,297 @@
+/* Common CSS for all pages */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Navigation Styles */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #f8c537;
+}
+
+.nav-items {
+    display: flex;
+    list-style: none;
+}
+
+.nav-items li {
+    margin-left: 30px;
+}
+
+.nav-items a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-items a:hover {
+    color: #f8c537;
+}
+
+.mobile-menu-btn {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #1c1c1c;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer-top {
+    padding: 60px 0 40px;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-heading {
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.footer-heading span {
+    color: #f8c537;
+}
+
+.footer-description {
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #b3b3b3;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #2c2c2c;
+    color: #f8c537;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: #f8c537;
+    color: #1c1c1c;
+    transform: translateY(-3px);
+}
+
+.contact-info {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-info li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    color: #b3b3b3;
+}
+
+.contact-info i {
+    color: #f8c537;
+    margin-right: 10px;
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+}
+
+.contact-info a {
+    color: #b3b3b3;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-info a:hover {
+    color: #f8c537;
+}
+
+.newsletter {
+    margin-top: 25px;
+}
+
+.newsletter h4 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.newsletter-form {
+    display: flex;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 10px 15px;
+    border: none;
+    background-color: #2c2c2c;
+    color: #fff;
+    border-radius: 4px 0 0 4px;
+}
+
+.newsletter-form button {
+    padding: 10px 15px;
+    background-color: #f8c537;
+    border: none;
+    color: #000;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 0 4px 4px 0;
+    transition: background-color 0.3s;
+}
+
+.newsletter-form button:hover {
+    background-color: #e0b12e;
+}
+
+.footer-bottom {
+    background-color: #151515;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-bottom .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.copyright {
+    color: #888;
+    font-size: 14px;
+    margin: 0;
+}
+
+.footer-bottom-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-bottom-links a {
+    color: #888;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.footer-bottom-links a:hover {
+    color: #f8c537;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .nav-items {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        width: 100%;
+        height: 100vh;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 50px;
+        transition: right 0.5s;
+        z-index: 100;
+    }
+    
+    .nav-items.active {
+        right: 0;
+    }
+    
+    .nav-items li {
+        margin: 20px 0;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .footer-container {
+        flex-direction: column;
+    }
+    
+    .footer-bottom .container {
+        flex-direction: column;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .newsletter-form input {
+        border-radius: 4px;
+        margin-bottom: 10px;
+    }
+    
+    .newsletter-form button {
+        border-radius: 4px;
+    }
+}
+
+/* Font Awesome CDN for icons */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
